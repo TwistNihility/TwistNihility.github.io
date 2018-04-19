@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-19T18:18:18.260Z</updated>
+  <updated>2018-04-19T18:27:52.495Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,26 +21,19 @@
     <link href="http://yoursite.com/2018/04/20/TFMLC-0/"/>
     <id>http://yoursite.com/2018/04/20/TFMLC-0/</id>
     <published>2018-04-19T17:56:41.000Z</published>
-    <updated>2018-04-19T18:18:18.260Z</updated>
+    <updated>2018-04-19T18:27:52.495Z</updated>
     
-    <content type="html"><![CDATA[<p>#书籍信息</p><ul><li>书名：TensorFlow机器学习实战指南</li></ul><ul><li>作者：[美]尼克·麦克卢尔</li></ul><ul><li>译者：曾益强</li></ul><ul><li>出版社：机械工业出版社</li></ul><p>#Book Information</p><ul><li>Name: TensorFlow Machine Learning Cookbook</li></ul><ul><li>Author: Nike McClure</li></ul><ul><li>Publisher: Packt Publishing</li></ul><p>#环境搭建+软件清单</p><ul><li>Python3</li></ul><ul><li>TensorFlow</li></ul><ul><li>numpy</li></ul><ul><li>scipy</li></ul><ul><li>sklearn</li></ul><ul><li>jupyter</li></ul><ul><li>matplotlib</li></ul><ul><li>requests</li></ul><ul><li>Pillow</li></ul><p>hello <a href="http://yoursite.com/2018/04/20/TFMLC-0/">http://yoursite.com/2018/04/20/TFMLC-0/</a> bye</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="书籍信息"><a href="#书籍信息" class="headerlink" title="书籍信息"></a>书籍信息</h1><ul><li>书名：TensorFlow机器学习实战指南</li></ul><ul><li>作者：[美]尼克·麦克卢尔</li></ul><ul><li>译者：曾益强</li></ul><ul><li>出版社：机械工业出版社</li></ul><h1 id="Book-Information"><a href="#Book-Information" class="headerlink" title="Book Information"></a>Book Information</h1><ul><li>Name: TensorFlow Machine Learning Cookbook</li></ul><ul><li>Author: Nike McClure</li></ul><ul><li>Publisher: Packt Publishing</li></ul><h1 id="环境搭建-软件清单"><a href="#环境搭建-软件清单" class="headerlink" title="环境搭建+软件清单"></a>环境搭建+软件清单</h1><ul><li>Python3</li></ul><ul><li>TensorFlow</li></ul><ul><li>numpy</li></ul><ul><li>scipy</li></ul><ul><li>sklearn</li></ul><ul><li>jupyter</li></ul><ul><li>matplotlib</li></ul><ul><li>requests</li></ul><ul><li>Pillow</li></ul><p>hello <a href="http://yoursite.com/2018/04/20/TFMLC-0/">http://yoursite.com/2018/04/20/TFMLC-0/</a> bye</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;#书籍信息&lt;/p&gt;
-&lt;ul&gt;
+        &lt;h1 id=&quot;书籍信息&quot;&gt;&lt;a href=&quot;#书籍信息&quot; class=&quot;headerlink&quot; title=&quot;书籍信息&quot;&gt;&lt;/a&gt;书籍信息&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;书名：TensorFlow机器学习实战指南&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
-&lt;li&gt;作者：[美]尼克·麦克卢尔&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;译者：曾益强&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;出版社：机械工业出版社&lt;/li
+&lt;li&gt;作者：[美]尼克·麦克卢尔&lt;
       
     
     </summary>
