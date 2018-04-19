@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习,深度学习,TensorFlow,Python," />
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="是夫喋喋，炫玉而贾石者也。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="1.TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：lear">
+<meta name="keywords" content="机器学习,深度学习,TensorFlow,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TFMLC学习笔记（1） TensorFlow基础">
+<meta property="og:url" content="http://yoursite.com/2018/04/20/TFMLC-1/index.html">
 <meta property="og:site_name" content="Sisyphus&#39;s Utopia">
-<meta property="og:description" content="是夫喋喋，炫玉而贾石者也。">
+<meta property="og:description" content="1.TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：lear">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-19T20:01:27.580Z">
+<meta property="og:updated_time" content="2018-04-19T20:11:31.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="是夫喋喋，炫玉而贾石者也。">
+<meta name="twitter:title" content="TFMLC学习笔记（1） TensorFlow基础">
+<meta name="twitter:description" content="1.TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：lear">
 
 
 
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/20/TFMLC-1/"/>
 
 
 
 
 
-  <title>标签 | Sisyphus's Utopia</title>
+  <title>TFMLC学习笔记（1） TensorFlow基础 | Sisyphus's Utopia</title>
   
 
 
@@ -259,40 +260,335 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/TFMLC-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Twist Nihility">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/saber.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sisyphus's Utopia">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 4 个标签
+          <h1 class="post-title" itemprop="name headline">TFMLC学习笔记（1） TensorFlow基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T02:41:11+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/20/TFMLC-1/" class="leancloud_visitors" data-flag-title="TFMLC学习笔记（1） TensorFlow基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  892
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Python/" style="font-size: 12px; color: #ccc">Python</a> <a href="/tags/TensorFlow/" style="font-size: 12px; color: #ccc">TensorFlow</a> <a href="/tags/机器学习/" style="font-size: 12px; color: #ccc">机器学习</a> <a href="/tags/深度学习/" style="font-size: 12px; color: #ccc">深度学习</a>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="1-TensorFlow算法的一般流程"><a href="#1-TensorFlow算法的一般流程" class="headerlink" title="1.TensorFlow算法的一般流程"></a>1.TensorFlow算法的一般流程</h1><ol>
+<li>导入/生成样本数据集</li>
+<li>转换和归一化数据</li>
+</ol>
+<ul>
+<li>归一化函数如下：<pre><code>data=tf.nn.batch_norm_with_global_normalization(...)
+</code></pre></li>
+</ul>
+<ol start="3">
+<li>将样本数据集划为三块：训练样本集、测试样本集、验证样本集<br> 训练集和测试集要不同；用验证集决定最优的超参数</li>
+<li>设置机器学习参数（超参数）</li>
+</ol>
+<ul>
+<li>经常一次性初始化所有的机器学习参数，例如：<pre><code>learning_rate=0.01
+batch_size=100
+iterations=1000
+</code></pre></li>
+</ul>
+<ol start="5">
+<li>初始化变量和占位符</li>
+</ol>
+<ul>
+<li>在求解最优化工程中（最小化损失函数），TensorFlow使用占位符获取数据，并调整变量和权重/偏差；</li>
+</ul>
+<ul>
+<li>TensorFlow指定数据大小和数据类型化初始化变量和占位符；</li>
+</ul>
+<ul>
+<li>使用的数据类型字节数越多，结果越精确，运行速度也越慢；<pre><code>a_var=tf.constant(42)
+x_input=tf.placeholder(tf.float32,[None,input_size])
+y_input=tf.placeholder(tf.float32,[None,num_classes])
+</code></pre></li>
+</ul>
+<ol start="6">
+<li>定义模型结构</li>
+</ol>
+<ul>
+<li>一个简单的线性模型：<pre><code>y_pred=tf.add(tf.mul(x_input,weight_matrix),b_matrix)
+</code></pre></li>
+</ul>
+<ol start="7">
+<li>声明损失函数</li>
+</ol>
+<ul>
+<li>损失函数说明预测值与实际值之间的差距:<pre><code>loss=tf.reduce_mean(tf.square(y_actual-y_pred))
+</code></pre></li>
+</ul>
+<ol start="8">
+<li>初始化模型和训练模型</li>
+</ol>
+<ul>
+<li>TensorFlow创建计算图实例，通过占位符赋值，维护变量的状态信息</li>
+<li>初始化计算图的一种方式：<pre><code>with tf.Session(graph=graph) as session:
+...
+session.run(...)
+...
+</code></pre></li>
+<li>初始化计算图的另一种方式：<pre><code>session=tf.Session(graph=graph)
+session.run(...)
+</code></pre></li>
+</ul>
+<ol start="9">
+<li>评估机器学习模型</li>
+<li>调优超参数</li>
+<li>发布/预测结果</li>
+</ol>
+<h1 id="2-声明张量"><a href="#2-声明张量" class="headerlink" title="2.声明张量"></a>2.声明张量</h1><h2 id="TensorFlow主要的数据结构就是张量，它用张量来操作计算图。可以把变量或者占位符声明为张量。"><a href="#TensorFlow主要的数据结构就是张量，它用张量来操作计算图。可以把变量或者占位符声明为张量。" class="headerlink" title="TensorFlow主要的数据结构就是张量，它用张量来操作计算图。可以把变量或者占位符声明为张量。"></a>TensorFlow主要的数据结构就是张量，它用张量来操作计算图。可以把变量或者占位符声明为张量。</h2><ol>
+<li>创建张量</li>
+</ol>
+<ul>
+<li>固定张量<ul>
+<li>创建指定维度的零张量：<pre><code>zero_tsr=tf.zeros([row_dim,col_dim])
+</code></pre></li>
+</ul>
+<ul>
+<li>创建指定维度的单位张量：<pre><code>ones_tsr=tf.ones([row_dim,col_dim])
+</code></pre></li>
+</ul>
+<ul>
+<li>创建指定维度的常数填充的张量：<pre><code>filled_tsr=tf.fill([row_dim,col_dim],42)
+</code></pre></li>
+</ul>
+<ul>
+<li>用已知常数张量创建一个张量:<pre><code>constant_tsr=tf.constant([1,2,3])
+</code></pre><ul>
+<li>tf.constant()函数也可以广播一个值为数组，然后模拟tf.fill()函数的功能：<pre><code>tf.constant(42,[row_dim,col_dim])
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>相似形状的张量<br>  新建一个与给定的tensor类型大小一致的tensor，其所有元素为0或1：<pre><code>zeros_similar=tf.zeros_like(constant_tsr)
+ones_similar=tf.ones_like(contant_tsr)
+</code></pre></li>
+</ul>
+<ul>
+<li>序列张量<br>  TensorFlow可以创建指定间隔的张量，以下函数的输出与range()函数和numpy中的linspace()函数的输出相似：<pre><code>linear_tsr=tf.linspace(start=0,stop=1,start=3)          #返回张量：[0.0,0.5,1.0]序列
+integer_seq_tsr=tf.range(start=6,limit=15,delta=3)      #返回张量：[6,9,12]序列
+</code></pre></li>
+</ul>
+<ul>
+<li>随机张量<ul>
+<li>tf.randon_uniform()生成均匀分布的随机数：<pre><code>randunif_tsr=tf.random_uniform([row_dim,col_dim],minval=0,maxval=1)
+</code></pre></li>
+<li>tf.randon_normal()生成正太分布的随机数：<pre><code>random_tsr=tf.random_normal([row_dim,col_dim],mean=0.0,stddev=1.0)
+</code></pre></li>
+<li>tf.truncated_normal()生成带有指定边界的正太分布的随机数，其正态分布的随机数位于指定均值（期望）到两个标准差之间的区间：<pre><code>runcnorm_tsr=tf.truncated_normal([row_dim,col_dim],mean=0.0,stddev=1.0)
+</code></pre></li>
+<li>tf.random_shuffle()和tf.random_crop()可以实现张量/数组的随机化：<pre><code>shuffled_output=tf.random_shuffle(input_tenspr)
+cropped_output=tf.random_crop(input_tensor,crop_size)
+</code></pre></li>
+<li>tf.random_crop()可以实现对张量指定大小的随机剪裁，为了固定剪裁结果的一个维度，需要在相应地维度上赋其最大值：<pre><code>cropped_image=tf.random_crop(my_image,[height/2,width/2,3])
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>把张量封装为变量<pre><code>mt_var=tf.Variable(tf.zeros([row_dim,col_dim]))
+</code></pre></li>
+</ol>
+<h1 id="3-使用占位符和变量"><a href="#3-使用占位符和变量" class="headerlink" title="3.使用占位符和变量"></a>3.使用占位符和变量</h1><h1 id="4-操作矩阵"><a href="#4-操作矩阵" class="headerlink" title="4.操作矩阵"></a>4.操作矩阵</h1><h1 id="5-张量的基本操作"><a href="#5-张量的基本操作" class="headerlink" title="5.张量的基本操作"></a>5.张量的基本操作</h1><h1 id="6-实现激励函数"><a href="#6-实现激励函数" class="headerlink" title="6.实现激励函数"></a>6.实现激励函数</h1><h1 id="7-读取数据源"><a href="#7-读取数据源" class="headerlink" title="7.读取数据源"></a>7.读取数据源</h1>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><iclass="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/深度学习/" rel="tag"><iclass="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/TensorFlow/" rel="tag"><iclass="fa fa-tag"></i> TensorFlow</a>
+          
+            <a href="/tags/Python/" rel="tag"><iclass="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/20/TFMLC-0/" rel="next" title="TFMLC学习笔记（0）序言">
+                <i class="fa fa-chevron-left"></i> TFMLC学习笔记（0）序言
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -325,8 +621,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -471,6 +776,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-TensorFlow算法的一般流程"><span class="nav-number">1.</span> <span class="nav-text">1.TensorFlow算法的一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-声明张量"><span class="nav-number">2.</span> <span class="nav-text">2.声明张量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow主要的数据结构就是张量，它用张量来操作计算图。可以把变量或者占位符声明为张量。"><span class="nav-number">2.1.</span> <span class="nav-text">TensorFlow主要的数据结构就是张量，它用张量来操作计算图。可以把变量或者占位符声明为张量。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用占位符和变量"><span class="nav-number">3.</span> <span class="nav-text">3.使用占位符和变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-操作矩阵"><span class="nav-number">4.</span> <span class="nav-text">4.操作矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-张量的基本操作"><span class="nav-number">5.</span> <span class="nav-text">5.张量的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-实现激励函数"><span class="nav-number">6.</span> <span class="nav-text">6.实现激励函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-读取数据源"><span class="nav-number">7.</span> <span class="nav-text">7.读取数据源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
