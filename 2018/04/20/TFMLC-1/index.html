@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Sisyphus&#39;s Utopia">
 <meta property="og:description" content="TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：1data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：123le">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T17:55:21.554Z">
+<meta property="og:updated_time" content="2018-04-20T18:06:15.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TFMLC学习笔记（1） TensorFlow基础">
 <meta name="twitter:description" content="TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：1data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：123le">
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,722
+                  3,721
                 </span>
               
 
@@ -533,7 +533,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sess=tf.Session()</span><br><span class="line">x=tf.placeholder(tf.float32,shape=[<span class="number">2</span>,<span class="number">2</span>])</span><br><span class="line">y=tf.identity(x)</span><br><span class="line">x_vals=np.random.rand(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">sess.run(y,feed_dict=&#123;x:x_vals&#125;)</span><br><span class="line"><span class="comment"># Note that sess.run(x,feed_dict=&#123;x:x_vals&#125;) will result in a self-referencing error.</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="4-操作矩阵"><a href="#4-操作矩阵" class="headerlink" title="4.操作矩阵"></a>4.操作矩阵</h1><ul>
+<h1 id="操作矩阵"><a href="#操作矩阵" class="headerlink" title="操作矩阵"></a>操作矩阵</h1><ul>
 <li>创建一个图会话：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">sess=tf.Session()</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -896,7 +896,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow算法的一般流程"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow算法的一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#声明张量"><span class="nav-number">2.</span> <span class="nav-text">声明张量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用占位符和变量"><span class="nav-number">3.</span> <span class="nav-text">使用占位符和变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-操作矩阵"><span class="nav-number">4.</span> <span class="nav-text">4.操作矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张量的基本操作"><span class="nav-number">5.</span> <span class="nav-text">张量的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现激励函数"><span class="nav-number">6.</span> <span class="nav-text">实现激励函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取数据源"><span class="nav-number">7.</span> <span class="nav-text">读取数据源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow算法的一般流程"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow算法的一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#声明张量"><span class="nav-number">2.</span> <span class="nav-text">声明张量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用占位符和变量"><span class="nav-number">3.</span> <span class="nav-text">使用占位符和变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作矩阵"><span class="nav-number">4.</span> <span class="nav-text">操作矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张量的基本操作"><span class="nav-number">5.</span> <span class="nav-text">张量的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现激励函数"><span class="nav-number">6.</span> <span class="nav-text">实现激励函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取数据源"><span class="nav-number">7.</span> <span class="nav-text">读取数据源</span></a></li></ol></div>
             
 
           </div>
