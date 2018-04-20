@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Sisyphus&#39;s Utopia">
 <meta property="og:description" content="TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：1data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：123le">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T17:45:28.491Z">
+<meta property="og:updated_time" content="2018-04-20T17:55:21.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TFMLC学习笔记（1） TensorFlow基础">
 <meta name="twitter:description" content="TensorFlow算法的一般流程 导入/生成样本数据集 转换和归一化数据   归一化函数如下：1data=tf.nn.batch_norm_with_global_normalization(...)    将样本数据集划为三块：训练样本集、测试样本集、验证样本集 训练集和测试集要不同；用验证集决定最优的超参数 设置机器学习参数（超参数）   经常一次性初始化所有的机器学习参数，例如：123le">
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,725
+                  3,722
                 </span>
               
 
@@ -574,7 +574,7 @@
 <li>矩阵的特征值和特征向量：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(sess.run(tf.self_adjoint_eig(D)))     <span class="comment">#第一行为特征值，剩余的向量是对应的特征向量</span></span><br><span class="line">[[<span class="number">-10.65907521</span> <span class="number">-0.22750691</span>  <span class="number">2.88658212</span>]</span><br><span class="line"> [  <span class="number">0.21749542</span>  <span class="number">0.63250104</span> <span class="number">-0.74339638</span>]</span><br><span class="line"> [  <span class="number">0.84526515</span>  <span class="number">0.2587998</span>   <span class="number">0.46749277</span>]</span><br><span class="line"> [  <span class="number">-0.4880805</span>  <span class="number">0.73004459</span>  <span class="number">0.47834331</span>]]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="5-张量的基本操作"><a href="#5-张量的基本操作" class="headerlink" title="5.张量的基本操作"></a>5.张量的基本操作</h1><p>TensorFlow张量的基本操作有：add()、sub()、mul()、div()、mod()</p>
+<h1 id="张量的基本操作"><a href="#张量的基本操作" class="headerlink" title="张量的基本操作"></a>张量的基本操作</h1><p>TensorFlow张量的基本操作有：add()、sub()、mul()、div()、mod()</p>
 <ul>
 <li>值得注意的是，div()函数返回值的数据类型与输入类型一致。所以，在Python2中，整数除法的实际返回是商的向下取整；而在Python3中，TensorFlow提供truediv()函数，其会在除法操作前强制转换整数为浮点数，所以最终的除法结果是浮点数。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(sess.run(tf.div(<span class="number">3</span>,<span class="number">4</span>)))</span><br><span class="line"><span class="number">0</span></span><br><span class="line">print(sess.run(tf.truediv(<span class="number">3</span>,<span class="number">4</span>)))</span><br><span class="line"><span class="number">0.75</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -590,7 +590,7 @@
 <ul>
 <li>其他数学函数：<br>abs()<br>ceil()<br>cos()<br>exp()<br>floor()<br>inv()：返回输入参数张量的倒数<br>log()<br>maximum()<br>minimum()<br>neg()：返回输入参数张量的负值<br>pow()：返回输入参数第一个张量的第二个张量的次幂<br>round()：返回输入参数张量的四舍五入结果<br>rsqrt()：返回输入参数张量的平方根的倒数<br>sign()：根据输入参数张量的符号，返回-1、0或1<br>sin()<br>sqrt()：返回输入参数张量的平方根<br>square()<br>digamma()：普西（Psi）函数，lgamma()函数的导数<br>erf()：返回张量的高斯误差函数<br>erfc()：返回张量的互补误差函数<br>igamma()：返回下不完全伽马函数<br>igammac()：返回上不完全伽马函数<br>lbeta()：返回贝塔函数绝对值的自然对数<br>lgamma()：返回伽马函数绝对值的自然对数<br>squared_difference()：返回两个张量间差值的平方</li>
 </ul>
-<h1 id="6-实现激励函数"><a href="#6-实现激励函数" class="headerlink" title="6.实现激励函数"></a>6.实现激励函数</h1><p>TensorFlow的激励函数位于神经网络（neural network，nn）库。</p>
+<h1 id="实现激励函数"><a href="#实现激励函数" class="headerlink" title="实现激励函数"></a>实现激励函数</h1><p>TensorFlow的激励函数位于神经网络（neural network，nn）库。</p>
 <ol>
 <li><p>整流线性单元（Rectifier Linear Unit，ReLU）<br>神经网络最常用的非线性函数。其函数为max(0,x)，连续但不平滑。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(sess.run(tf.nn.relu([<span class="number">-3.</span>,<span class="number">3.</span>,<span class="number">10.</span>])))</span><br><span class="line">[<span class="number">0.</span>  <span class="number">3.</span>  <span class="number">10.</span>]</span><br></pre></td></tr></table></figure>
@@ -614,7 +614,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(sess.run(tf.nn.elu([<span class="number">-1.</span>,<span class="number">0.</span>,<span class="number">-1.</span>])))</span><br><span class="line">[<span class="number">-0.63212055</span> <span class="number">0.</span> <span class="number">1.</span>]</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="7-读取数据源"><a href="#7-读取数据源" class="headerlink" title="7.读取数据源"></a>7.读取数据源</h1><ol>
+<h1 id="读取数据源"><a href="#读取数据源" class="headerlink" title="读取数据源"></a>读取数据源</h1><ol>
 <li><p>鸢尾花卉数据集（Iris data）<br>此样本数据是机器学习和统计分析最经典的数据集，包含鸢尾花、变色鸢尾和维吉尼亚鸢尾各自的花萼和花瓣的长度和宽度。总共有150个数据集，每类有50个样本。用Python加载样本数据集时，可以使用Scikit Learn的数据集函数，使用方式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">print(len(iris.data))</span><br><span class="line"><span class="number">150</span></span><br><span class="line">print(len(iris.target))</span><br><span class="line"><span class="number">150</span></span><br><span class="line">print(iris.data[<span class="number">0</span>])         <span class="comment">#Sepal length, Sepal width, Petal length, Petal width</span></span><br><span class="line">[<span class="number">5.1</span> <span class="number">3.5</span> <span class="number">1.4</span> <span class="number">0.2</span>]</span><br><span class="line">print(set(iris.target))     <span class="comment"># Ⅰ. setosa, Ⅱ. virginica, Ⅲ. versicolor</span></span><br><span class="line">&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -896,7 +896,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow算法的一般流程"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow算法的一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#声明张量"><span class="nav-number">2.</span> <span class="nav-text">声明张量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用占位符和变量"><span class="nav-number">3.</span> <span class="nav-text">使用占位符和变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-操作矩阵"><span class="nav-number">4.</span> <span class="nav-text">4.操作矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-张量的基本操作"><span class="nav-number">5.</span> <span class="nav-text">5.张量的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-实现激励函数"><span class="nav-number">6.</span> <span class="nav-text">6.实现激励函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-读取数据源"><span class="nav-number">7.</span> <span class="nav-text">7.读取数据源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow算法的一般流程"><span class="nav-number">1.</span> <span class="nav-text">TensorFlow算法的一般流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#声明张量"><span class="nav-number">2.</span> <span class="nav-text">声明张量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用占位符和变量"><span class="nav-number">3.</span> <span class="nav-text">使用占位符和变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-操作矩阵"><span class="nav-number">4.</span> <span class="nav-text">4.操作矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#张量的基本操作"><span class="nav-number">5.</span> <span class="nav-text">张量的基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现激励函数"><span class="nav-number">6.</span> <span class="nav-text">实现激励函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取数据源"><span class="nav-number">7.</span> <span class="nav-text">读取数据源</span></a></li></ol></div>
             
 
           </div>
