@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/25/the-history-of-javascript/</loc>
+    
+    <lastmod>2018-04-24T18:20:53.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/22/TFMLC-2/</loc>
+    
+    <lastmod>2018-04-23T14:34:01.079Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/21/front-end-interview-1/</loc>
     
     <lastmod>2018-04-21T13:37:51.100Z</lastmod>
