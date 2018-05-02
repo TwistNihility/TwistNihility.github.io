@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/05/02/TFMLC-4/</loc>
+    
+    <lastmod>2018-05-02T10:24:20.377Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/27/TFMLC-3/</loc>
+    
+    <lastmod>2018-05-02T10:02:32.325Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/22/TFMLC-2/</loc>
     
     <lastmod>2018-04-29T03:57:23.150Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://yoursite.com/2018/04/25/the-history-of-javascript/</loc>
     
     <lastmod>2018-04-29T03:29:15.686Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/27/TFMLC-3/</loc>
-    
-    <lastmod>2018-04-29T00:24:09.789Z</lastmod>
     
   </url>
   
