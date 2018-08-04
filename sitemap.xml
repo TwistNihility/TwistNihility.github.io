@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/08/04/Docker/</loc>
+    
+    <lastmod>2018-08-04T06:35:54.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/13/TFMLC-6/</loc>
+    
+    <lastmod>2018-06-06T02:58:53.561Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/11/TFMLC-5/</loc>
+    
+    <lastmod>2018-05-13T11:14:23.649Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/05/11/%E5%B1%80%E5%A4%96%E4%BA%BA/</loc>
     
     <lastmod>2018-05-10T18:39:58.719Z</lastmod>

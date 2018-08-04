@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,深度学习,TensorFlow,Python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sisyphus's Utopia" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="神经网络算法基础&amp;emsp;&amp;emsp;神经网络算法在识别图像和语音、识别手写、理解文本、图像分割、对话系统、自动驾驶等领域不断打破记录。&amp;emsp;&amp;emsp;神经网络算法的概念已经出现几十年，但是它仅仅在最近由于计算能力（计算处理、算法效率和数据集大小）的提升能训练大规模网络才获得新的进展。&amp;emsp;&amp;emsp;神经网络算法是对输入数据矩阵进行一系列的基本操作。这些操作通常包括非线性函数的加">
+<meta name="keywords" content="机器学习,深度学习,TensorFlow,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TFMLC学习笔记（6） 神经网络算法">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/TFMLC-6/index.html">
+<meta property="og:site_name" content="Sisyphus&#39;s Utopia">
+<meta property="og:description" content="神经网络算法基础&amp;emsp;&amp;emsp;神经网络算法在识别图像和语音、识别手写、理解文本、图像分割、对话系统、自动驾驶等领域不断打破记录。&amp;emsp;&amp;emsp;神经网络算法的概念已经出现几十年，但是它仅仅在最近由于计算能力（计算处理、算法效率和数据集大小）的提升能训练大规模网络才获得新的进展。&amp;emsp;&amp;emsp;神经网络算法是对输入数据矩阵进行一系列的基本操作。这些操作通常包括非线性函数的加">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-06T02:58:53.561Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TFMLC学习笔记（6） 神经网络算法">
+<meta name="twitter:description" content="神经网络算法基础&amp;emsp;&amp;emsp;神经网络算法在识别图像和语音、识别手写、理解文本、图像分割、对话系统、自动驾驶等领域不断打破记录。&amp;emsp;&amp;emsp;神经网络算法的概念已经出现几十年，但是它仅仅在最近由于计算能力（计算处理、算法效率和数据集大小）的提升能训练大规模网络才获得新的进展。&amp;emsp;&amp;emsp;神经网络算法是对输入数据矩阵进行一系列的基本操作。这些操作通常包括非线性函数的加">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/13/TFMLC-6/"/>
+
+
+
+
+
+  <title>TFMLC学习笔记（6） 神经网络算法 | Sisyphus's Utopia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sisyphus's Utopia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/TFMLC-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Twist Nihility">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/saber.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sisyphus's Utopia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TFMLC学习笔记（6） 神经网络算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T19:03:59+08:00">
+                2018-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/13/TFMLC-6/" class="leancloud_visitors" data-flag-title="TFMLC学习笔记（6） 神经网络算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,360
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  31
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="神经网络算法基础"><a href="#神经网络算法基础" class="headerlink" title="神经网络算法基础"></a>神经网络算法基础</h1><p>&emsp;&emsp;神经网络算法在识别图像和语音、识别手写、理解文本、图像分割、对话系统、自动驾驶等领域不断打破记录。<br>&emsp;&emsp;神经网络算法的概念已经出现几十年，但是它仅仅在最近由于计算能力（计算处理、算法效率和数据集大小）的提升能训练大规模网络才获得新的进展。<br>&emsp;&emsp;神经网络算法是对输入数据矩阵进行一系列的基本操作。这些操作通常包括非线性函数的加法和乘法。逻辑回归算法是斜率与特征点积求和之后的进行非线性sigmoid函数计算。神经网络算法表达形式更通用，允许任意形式的基本操作和非线性函数的结合，包括绝对值、最大值、最小值等。<br>&emsp;&emsp;神经网络算法的一个重要的“黑科技”是“反向传播”。反向传播是一种基于学习率和损失函数返回值来更新模型变量的过程。<br>&emsp;&emsp;神经网络算法另外一个重要特性是非线性激励函数。因为大部分神经网络算法仅仅是加法和乘法操作的结合，所以它们不能进行非线性样本集的模型训练。为了解决该问题，我们在神经网络算法中使用非线性激励函数，这将使得神经网络算法能够解决大部分非线性的问题。<br>&emsp;&emsp;如前见过的大部分算法，神经网络算法对所选择的超参数是敏感的。</p>
+<h1 id="用TensorFlow实现门函数"><a href="#用TensorFlow实现门函数" class="headerlink" title="用TensorFlow实现门函数"></a>用TensorFlow实现门函数</h1><p>&emsp;&emsp;第一个是实现的操作门是f(x) = a·x。为了优化该门操作，我们声明a输入作为变量，x输入作为占位符。这意味着TensorFlow将改变a的值，而不是x的值。我们将创建损失函数，度量输出结果和目标值之间的差值，这里的目标值为50。<br>&emsp;&emsp;第二个实现的嵌套操作门是f(x) = a·x + b。我们声明a和b为变量，x为占位符。向目标值50优化输出结果。第二个例子的解决方法不是唯一的。许多模型变量的组合使得输出结果为50.在神经网络算法中，我们不太关心模型变量的中间值，而把关注点放在预期的输出结果上。<br>下图是上述两个例子的门操作的描述：</p>
+<p>实现第一个门操作f(x) = a·x，并训练输出结果50：</p>
+<ol>
+<li><p>加载TensorFlow模块，创建一个计算图会话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start Graph Session</span></span><br><span class="line">sess = tf.Session()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明模型变量、输入数据集和占位符。本例输出为5，所以乘法因子为10，可以得到50的预期值（5 x 10 = 50）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = tf.Variable(tf.constant(<span class="number">4.</span>))</span><br><span class="line">x_val = <span class="number">5.</span></span><br><span class="line">x_data = tf.placeholder(dtype=tf.float32)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增加操作到计算图中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multiplication = tf.multiply(a, x_data)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明损失函数：输出结果与预期目标值（50）之间的L2距离函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare the loss function as the difference between</span></span><br><span class="line"><span class="comment"># the output and a target value, 50.</span></span><br><span class="line">loss = tf.square(tf.subtract(multiplication, <span class="number">50.</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化模型变量，声明标准梯度下降优化算法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Initialize variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Declare optimizer</span></span><br><span class="line">my_opt = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>)</span><br><span class="line">train_step = my_opt.minimize(loss)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化模型输出结果。连续输入值5，反向传播损失函数来更新模型变量以达到值10：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run loop across gate</span></span><br><span class="line">print(<span class="string">'Optimizing a Multiplication Gate Output to 50.'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x_data: x_val&#125;)</span><br><span class="line">    a_val = sess.run(a)</span><br><span class="line">    mult_output = sess.run(multiplication, feed_dict=&#123;x_data: x_val&#125;)</span><br><span class="line">    print(str(a_val) + <span class="string">' * '</span> + str(x_val) + <span class="string">' = '</span> + str(mult_output))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出结果：<br>Optimizing a Multiplication Gate Output to 50.<br>7.0 <em> 5.0 = 35.0<br>8.5 </em> 5.0 = 42.5<br>9.25 <em> 5.0 = 46.25<br>9.625 </em> 5.0 = 48.125<br>9.8125 <em> 5.0 = 49.0625<br>9.90625 </em> 5.0 = 49.5312<br>9.95312 <em> 5.0 = 49.7656<br>9.97656 </em> 5.0 = 49.8828<br>9.98828 <em> 5.0 = 49.9414<br>9.99414 </em> 5.0 = 49.9707</p>
+<p>对两个嵌套操作的例子f(x) = a·x + b，也执行上述相同的步骤。</p>
+<ol>
+<li><p>开始第二个例子，不同在于本例中包含两个模型变量：a和b：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.framework <span class="keyword">import</span> ops</span><br><span class="line">ops.reset_default_graph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start Graph Session</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line">a = tf.Variable(tf.constant(<span class="number">1.</span>))</span><br><span class="line">b = tf.Variable(tf.constant(<span class="number">1.</span>))</span><br><span class="line">x_val = <span class="number">5.</span></span><br><span class="line">x_data = tf.placeholder(dtype=tf.float32)</span><br><span class="line"></span><br><span class="line">two_gate = tf.add(tf.multiply(a, x_data), b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Declare the loss function as the difference between</span></span><br><span class="line"><span class="comment"># the output and a target value, 50.</span></span><br><span class="line">loss = tf.square(tf.subtract(two_gate, <span class="number">50.</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化模型变量，训练输出结果，以达到预期目标值50：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run loop across gate</span></span><br><span class="line">print(<span class="string">'\nOptimizing Two Gate Output to 50.'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x_data: x_val&#125;)</span><br><span class="line">    a_val, b_val = (sess.run(a), sess.run(b))</span><br><span class="line">    two_gate_output = sess.run(two_gate, feed_dict=&#123;x_data: x_val&#125;)</span><br><span class="line">    print(str(a_val) + <span class="string">' * '</span> + str(x_val) + <span class="string">' + '</span> + str(b_val) + <span class="string">' = '</span> + str(two_gate_output))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出结果：<br>Optimizing Two Gate Output to 50.<br>5.4 <em> 5.0 + 1.88 = 28.88<br>7.512 </em> 5.0 + 2.3024 = 39.8624<br>8.52576 <em> 5.0 + 2.50515 = 45.134<br>9.01236 </em> 5.0 + 2.60247 = 47.6643<br>9.24593 <em> 5.0 + 2.64919 = 48.8789<br>9.35805 </em> 5.0 + 2.67161 = 49.4619<br>9.41186 <em> 5.0 + 2.68237 = 49.7417<br>9.43769 </em> 5.0 + 2.68754 = 49.876<br>9.45009 <em> 5.0 + 2.69002 = 49.9405<br>9.45605 </em> 5.0 + 2.69121 = 49.9714</p>
+<h1 id="使用门函数和激励函数"><a href="#使用门函数和激励函数" class="headerlink" title="使用门函数和激励函数"></a>使用门函数和激励函数</h1><p>本节将比较两种不同的激励函数：sigmoid激励函数和ReLU激励函数。<br>$sigmoid(x) = /frac{1}{1+e^x}<br>$ReLU(x) = max(0,x)<br>在本例中，我们将创建两个相同的单层神经网络，一个通过sigmoid激励函数赋值，另一个通过ReLU激励函数赋值。损失函数使用L2范数距离函数（输出结果与0.75的差值）。我们将从正太分布数据集（Normal(mean=2,sd=0.1)）中随机抽取批量数据，优化输出结果达到预期值0.75。</p>
+<ol>
+<li><p>导入必要的编程库，初始化一个计算图会话。对于学习在TensorFlow中如何设置随机种子而言，这也是一个很好的例子。这里将使用TensorFlow和Numpy模块的随机数生成器。对于相同的随机种子集，我们应该能够复现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start Graph Session</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line">tf.set_random_seed(<span class="number">5</span>)</span><br><span class="line">np.random.seed(<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明批量大小、模型变量、数据集和占位符。<br>在计算图中为两个相似的神经网络模型（仅激励函数不同）传入正态分布数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">a1 = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line">b1 = tf.Variable(tf.random_uniform(shape=[<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line">a2 = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line">b2 = tf.Variable(tf.random_uniform(shape=[<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line">x = np.random.normal(<span class="number">2</span>, <span class="number">0.1</span>, <span class="number">500</span>)</span><br><span class="line">x_data = tf.placeholder(shape=[<span class="keyword">None</span>, <span class="number">1</span>], dtype=tf.float32)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明两个训练模型，即sigmoid激励模型和ReLU激励模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sigmoid_activation = tf.sigmoid(tf.add(tf.matmul(x_data, a1), b1))</span><br><span class="line">relu_activation = tf.nn.relu(tf.add(tf.matmul(x_data, a2), b2))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>损失函数都采用模型输出和预期值0.75之间的差值的L2范数平均：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare the loss function as the difference between</span></span><br><span class="line"><span class="comment"># the output and a target value, 0.75.</span></span><br><span class="line">loss1 = tf.reduce_mean(tf.square(tf.subtract(sigmoid_activation, <span class="number">0.75</span>)))</span><br><span class="line">loss2 = tf.reduce_mean(tf.square(tf.subtract(relu_activation, <span class="number">0.75</span>)))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明优化算法，初始化变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare optimizer</span></span><br><span class="line">my_opt = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>)</span><br><span class="line">train_step_sigmoid = my_opt.minimize(loss1)</span><br><span class="line">train_step_relu = my_opt.minimize(loss2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历迭代训练模型，每个模型迭代750次。保存损失函数输出和激励函数的返回值，以便后续绘图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">loss_vec_sigmoid = []</span><br><span class="line">loss_vec_relu = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">    rand_indices = np.random.choice(len(x), size=batch_size)</span><br><span class="line">    x_vals = np.transpose([x[rand_indices]])</span><br><span class="line">    sess.run(train_step_sigmoid, feed_dict=&#123;x_data: x_vals&#125;)</span><br><span class="line">    sess.run(train_step_relu, feed_dict=&#123;x_data: x_vals&#125;)</span><br><span class="line">    </span><br><span class="line">    loss_vec_sigmoid.append(sess.run(loss1, feed_dict=&#123;x_data: x_vals&#125;))</span><br><span class="line">    loss_vec_relu.append(sess.run(loss2, feed_dict=&#123;x_data: x_vals&#125;))</span><br><span class="line"></span><br><span class="line">activation_sigmoid.append(np.mean(sess.run(sigmoid_activation, feed_dict=&#123;x_data:x_vals&#125;)))</span><br><span class="line">activation_relu.append(np.mean(sess.run(relu_activation,feed_dict=&#123;x_data:x_vals&#125;)))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绘制损失函数和激励函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot the loss</span></span><br><span class="line">plt.plot(loss_vec_sigmoid, <span class="string">'k-'</span>, label=<span class="string">'Sigmoid Activation'</span>)</span><br><span class="line">plt.plot(loss_vec_relu, <span class="string">'r--'</span>, label=<span class="string">'Relu Activation'</span>)</span><br><span class="line">plt.ylim([<span class="number">0</span>, <span class="number">1.0</span>])</span><br><span class="line">plt.title(<span class="string">'Loss per Generation'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Loss'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.plot(activation_sigmoid,<span class="string">'k-'</span>,label=<span class="string">'Siamoid Activation'</span>)</span><br><span class="line">plt.plot(activation_relu,<span class="string">'r--'</span>,label=<span class="string">'Relu Activation'</span>)</span><br><span class="line">plt.ylim([<span class="number">0</span>,<span class="number">1.0</span>])</span><br><span class="line">plt.title(<span class="string">'Activation Outputs'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Outputs'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>两个神经网络模型具有相似的结构和预期值0.75，只有激励函数不同（分别是sigmoid和ReLU激励函数）。从下图可以看出，带有ReLU激励函数的神经网络比sigmoid激励函数的神经网络向0.75收敛得更快。</p>
+<ol start="8">
+<li><p>总结<br>基于ReLU激励函数的形式，它将比sigmoid激励函数返回更多的0值。我们认为该行为是一种稀疏性的，稀疏性导致收敛速度加快，但是损失了一部分梯度控制的能力。相反，sigmoid有很好的梯度控制，不会出现ReLU激励函数那样的极值。sigmoid激励函数和ReLU激励函数的对比如下所示：</p>
+<p>激励函数              优点                缺点<br>Sigmoid激励函数    输出的极值很少           收敛太慢<br>ReLU激励函数          快速收敛        返回结果中容易出现极值</p>
+</li>
+</ol>
+<p>在本节中，我们比较了神经网络算法的ReLU激励函数和sigmoid激励函数。神经网络算法常用的激励函数还有很多，但可以整体归纳为两类：第一类是形状类似sigmoid的激励函数，包括反正切激励函数、双曲正切函数、阶跃激励函数等；第二类是形状类似ReLU的激励函数，包括softplus激励函数、leak ReLU激励函数。本节讨论的两类激励函数的大部分比较结果也适用于所在的同类激励函数。激励函数的选择对于神经网络算法的收敛是非常关键的。</p>
+<h1 id="用TensorFlow实现单层神经网络"><a href="#用TensorFlow实现单层神经网络" class="headerlink" title="用TensorFlow实现单层神经网络"></a>用TensorFlow实现单层神经网络</h1><p>本节将实现一个单层神经网络（层即为神经网络中的神经元），并在Iris数据集数据集上进行模型训练。<br>在本节中，我们将实现一个单隐藏层的神经网络算法。理解全联接神经网络算法主要是基于矩阵的乘法的，这一点是相当重要的。并且，数据集和矩阵的维度对于算法模型正确有序地运行是非常关键的。<br>由于本例是一个回归算法问题，所以使用均方误差作为损失函数。</p>
+<ol>
+<li><p>创建计算图会话，导入必要的编程库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载Iris数据集，存储花萼长度作为目标值，然后开始一个计算图会话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iris = datasets.load_iris()</span><br><span class="line">x_vals = np.array([x[<span class="number">0</span>:<span class="number">3</span>] <span class="keyword">for</span> x <span class="keyword">in</span> iris.data])</span><br><span class="line">y_vals = np.array([x[<span class="number">3</span>] <span class="keyword">for</span> x <span class="keyword">in</span> iris.data])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create graph session </span></span><br><span class="line">sess = tf.Session()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因为数据集比较小，我们设置一个种子使得返回结果可复现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make results reproducible</span></span><br><span class="line">seed = <span class="number">2</span></span><br><span class="line">tf.set_random_seed(seed)</span><br><span class="line">np.random.seed(seed)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了准备数据集，我们创建一个80-20分的训练集和测试集。通过min-max缩放法正则化x特征值为0到1之间：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Split data into train/test = 80%/20%</span></span><br><span class="line">train_indices = np.random.choice(len(x_vals), round(len(x_vals)*<span class="number">0.8</span>), replace=<span class="keyword">False</span>)</span><br><span class="line">test_indices = np.array(list(set(range(len(x_vals))) - set(train_indices)))</span><br><span class="line">x_vals_train = x_vals[train_indices]</span><br><span class="line">x_vals_test = x_vals[test_indices]</span><br><span class="line">y_vals_train = y_vals[train_indices]</span><br><span class="line">y_vals_test = y_vals[test_indices]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Normalize by column (min-max norm)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize_cols</span><span class="params">(m)</span>:</span></span><br><span class="line">    col_max = m.max(axis=<span class="number">0</span>)</span><br><span class="line">    col_min = m.min(axis=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> (m-col_min) / (col_max - col_min)</span><br><span class="line"></span><br><span class="line">x_vals_train = np.nan_to_num(normalize_cols(x_vals_train))</span><br><span class="line">x_vals_test = np.nan_to_num(normalize_cols(x_vals_test))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在为数据集和目标值声明批量大小和占位符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare batch size</span></span><br><span class="line">batch_size = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize placeholders</span></span><br><span class="line">x_data = tf.placeholder(shape=[<span class="keyword">None</span>, <span class="number">3</span>], dtype=tf.float32)</span><br><span class="line">y_target = tf.placeholder(shape=[<span class="keyword">None</span>, <span class="number">1</span>], dtype=tf.float32)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明有合适形状的模型变量<br>能声明任意大小的隐藏层，本例中设置为有五个隐藏节点：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create variables for both NN layers</span></span><br><span class="line">hidden_layer_nodes = <span class="number">10</span></span><br><span class="line">A1 = tf.Variable(tf.random_normal(shape=[<span class="number">3</span>,hidden_layer_nodes])) <span class="comment"># inputs -&gt; hidden nodes</span></span><br><span class="line">b1 = tf.Variable(tf.random_normal(shape=[hidden_layer_nodes]))   <span class="comment"># one biases for each hidden node</span></span><br><span class="line">A2 = tf.Variable(tf.random_normal(shape=[hidden_layer_nodes,<span class="number">1</span>])) <span class="comment"># hidden inputs -&gt; 1 output</span></span><br><span class="line">b2 = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>]))   <span class="comment"># 1 bias for the output</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分两步声明训练模型<br>第一步，创建一个隐藏层输出；第二步，创建训练模型的最后输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare model operations</span></span><br><span class="line">hidden_output = tf.nn.relu(tf.add(tf.matmul(x_data, A1), b1))</span><br><span class="line">final_output = tf.nn.relu(tf.add(tf.matmul(hidden_output, A2), b2))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义均方误差作为损失函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss = tf.reduce_mean(tf.square(y_target - final_output))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明优化算法，初始化模型变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare optimizer</span></span><br><span class="line">my_opt = tf.train.GradientDescentOptimizer(<span class="number">0.005</span>)</span><br><span class="line">train_step = my_opt.minimize(loss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历迭代训练模型<br>我们也初始化两个列表（list）存储训练损失和测试损失。在每次迭代时，随机选择批量训练数据来拟合模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Training loop</span></span><br><span class="line"><span class="comment"># First we initialize the loss vectors for storage.</span></span><br><span class="line">loss_vec = []</span><br><span class="line">test_loss = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">    <span class="comment"># First we select a random set of indices for the batch.</span></span><br><span class="line">    rand_index = np.random.choice(len(x_vals_train), size=batch_size)</span><br><span class="line">    <span class="comment"># We then select the training values</span></span><br><span class="line">    rand_x = x_vals_train[rand_index]</span><br><span class="line">    rand_y = np.transpose([y_vals_train[rand_index]])</span><br><span class="line">    <span class="comment"># Now we run the training step</span></span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x_data: rand_x, y_target: rand_y&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># We save the training loss</span></span><br><span class="line">    temp_loss = sess.run(loss, feed_dict=&#123;x_data: rand_x, y_target: rand_y&#125;)</span><br><span class="line">    loss_vec.append(np.sqrt(temp_loss))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Finally, we run the test-set loss and save it.</span></span><br><span class="line">    test_temp_loss = sess.run(loss, feed_dict=&#123;x_data: x_vals_test, y_target: np.transpose([y_vals_test])&#125;)</span><br><span class="line">    test_loss.append(np.sqrt(test_temp_loss))</span><br><span class="line">    <span class="keyword">if</span> (i+<span class="number">1</span>)%<span class="number">50</span>==<span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'Generation: '</span> + str(i+<span class="number">1</span>) + <span class="string">'. Loss = '</span> + str(temp_loss))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用matplotlib绘制损失函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot loss (MSE) over time</span></span><br><span class="line">plt.plot(loss_vec, <span class="string">'k-'</span>, label=<span class="string">'Train Loss'</span>)</span><br><span class="line">plt.plot(test_loss, <span class="string">'r--'</span>, label=<span class="string">'Test Loss'</span>)</span><br><span class="line">plt.title(<span class="string">'Loss (MSE) per Generation'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Generation'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Loss'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>总结<br>我们通过可视化测试集和训练集的损失函数可以判定训练数据集上的模型训练是否过拟合，也可以发现测试集的损失函数比训练集更平滑，主要有两个原因：一，训练集的数据批量大小比测试集小；二，模型训练是在训练集上进行的，所以测试集对模型变量没有影响。</p>
+</li>
+</ol>
+<h1 id="用TensorFlow实现神经网络常见层"><a href="#用TensorFlow实现神经网络常见层" class="headerlink" title="用TensorFlow实现神经网络常见层"></a>用TensorFlow实现神经网络常见层</h1><p>本节将介绍如何实现常见层，包括卷积层（convolutional layer）和池化层（maxpool layer）。在上一届，我们实现了全联接层，本小节将扩展到其他层。<br>我们已经研究了如何连接数据输入和全联接的隐藏层。TensorFlow中有很多内建函数的多种类型的层，其中最流行的是卷积层和池化层。我们将展示如何在输入数据和全联接的数据上创建和使用这些层。首先，我们来介绍如何在一维数据上使用这些层，然后是在二维数据上使用它们。<br>神经网络算法的层能以任意形式组合，最常用的使用方法是用卷积层和全联接层来创建特征。如果我们有许多特征，常用的处理方法是采用池化层。在这些层之后常常引入激励函数。卷积神经网络（CNN）算法经常会包括卷积层、池化层，激励函数等。</p>
+<ol>
+<li><p>导入需要的编程库，创建计算图会话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create graph session </span></span><br><span class="line">sess = tf.Session()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化数据，该数据为Numpy数组，长度为25.创建传入数据的占位符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># parameters for the run</span></span><br><span class="line">data_size = <span class="number">25</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate 1D data</span></span><br><span class="line">data_1d = np.random.normal(size=data_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Placeholder</span></span><br><span class="line">x_input_1d = tf.placeholder(dtype=tf.float32, shape=[data_size])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义一个卷积层的函数。接着声明一个随机过滤层，创建一个卷积层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Convolution--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_layer_1d</span><span class="params">(input_1d, my_filter,stride)</span>:</span></span><br><span class="line">    <span class="comment"># TensorFlow's 'conv2d()' function only works with 4D arrays:</span></span><br><span class="line">    <span class="comment"># [batch#, width, height, channels], we have 1 batch, and</span></span><br><span class="line">    <span class="comment"># width = 1, but height = the length of the input, and 1 channel.</span></span><br><span class="line">    <span class="comment"># So next we create the 4D array by inserting dimension 1's.</span></span><br><span class="line">    input_2d = tf.expand_dims(input_1d, <span class="number">0</span>)</span><br><span class="line">    input_3d = tf.expand_dims(input_2d, <span class="number">0</span>)</span><br><span class="line">    input_4d = tf.expand_dims(input_3d, <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># Perform convolution with stride = 1, if we wanted to increase the stride,</span></span><br><span class="line">    <span class="comment"># to say '2', then strides=[1,1,2,1]</span></span><br><span class="line">    convolution_output = tf.nn.conv2d(input_4d, filter=my_filter, strides=[<span class="number">1</span>,<span class="number">1</span>,stride,<span class="number">1</span>], padding=<span class="string">"VALID"</span>)</span><br><span class="line">    <span class="comment"># Get rid of extra dimensions</span></span><br><span class="line">    conv_output_1d = tf.squeeze(convolution_output)</span><br><span class="line">    <span class="keyword">return</span>(conv_output_1d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create filter for convolution.</span></span><br><span class="line">my_filter = tf.Variable(tf.random_normal(shape=[<span class="number">1</span>,conv_size,<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line"><span class="comment"># Create convolution layer</span></span><br><span class="line">my_convolution_output = conv_layer_1d(x_input_1d, my_filter,stride=stride_size)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意，许多TensorFlow的层函数是为四维数据设计的（4D=[batch size,width,height,channels]）。我们需要调整输入数据和输出数据，包括扩展维度和降维。在本例中，批量大小为1，宽度为1，高度为25，颜色通道为1。为了扩展维度，使用expand_dims()函数；降维使用squeeze()函数。卷积层的输出结果的维度公式为output_size=(W-F+2P)/S+1，其中W为输入数据维度，F为过滤层大小，P是padding大小，S是步长大小。</p>
+<ol start="4">
+<li><p>TensorFlow的激励函数默认是逐个元素进行操作。这意味着，在部分层中使用激励函数。下面创建一个激励函数并初始化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Activation--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">activation</span><span class="params">(input_1d)</span>:</span></span><br><span class="line">    <span class="keyword">return</span>(tf.nn.relu(input_1d))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create activation layer</span></span><br><span class="line">my_activation_output = activation(my_convolution_output)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明一个池化层函数，该函数在一维向量的移动窗口上创建池化层函数。对于本例，其宽度为5：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Max Pool--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool</span><span class="params">(input_1d, width,stride)</span>:</span></span><br><span class="line">    <span class="comment"># Just like 'conv2d()' above, max_pool() works with 4D arrays.</span></span><br><span class="line">    <span class="comment"># [batch_size=1, width=1, height=num_input, channels=1]</span></span><br><span class="line">    input_2d = tf.expand_dims(input_1d, <span class="number">0</span>)</span><br><span class="line">    input_3d = tf.expand_dims(input_2d, <span class="number">0</span>)</span><br><span class="line">    input_4d = tf.expand_dims(input_3d, <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># Perform the max pooling with strides = [1,1,1,1]</span></span><br><span class="line">    <span class="comment"># If we wanted to increase the stride on our data dimension, say by</span></span><br><span class="line">    <span class="comment"># a factor of '2', we put strides = [1, 1, 2, 1]</span></span><br><span class="line">    <span class="comment"># We will also need to specify the width of the max-window ('width')</span></span><br><span class="line">    pool_output = tf.nn.max_pool(input_4d, ksize=[<span class="number">1</span>, <span class="number">1</span>, width, <span class="number">1</span>],</span><br><span class="line">                                 strides=[<span class="number">1</span>, <span class="number">1</span>, stride, <span class="number">1</span>],</span><br><span class="line">                                 padding=<span class="string">'VALID'</span>)</span><br><span class="line">    <span class="comment"># Get rid of extra dimensions</span></span><br><span class="line">    pool_output_1d = tf.squeeze(pool_output)</span><br><span class="line">    <span class="keyword">return</span>(pool_output_1d)</span><br><span class="line"></span><br><span class="line">my_maxpool_output = max_pool(my_activation_output, width=maxpool_size,stride=stride_size)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>TensorFlow的池化层函数的参数与卷积层函数参数非常相似。但是它没有过滤层，只有形状、步长和padding选项。因为窗口宽度为5，并且具有valid padding（即非零padding），所以输出数组将有4或者2·floor(5/2)项。</p>
+<ol start="6">
+<li><p>最后一层连接的是全联接层。创建一个函数，该函数输入一维数据，输出值的索引。一维数组做矩阵乘法需要提前扩展为三维：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Fully Connected--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fully_connected</span><span class="params">(input_layer, num_outputs)</span>:</span></span><br><span class="line">    <span class="comment"># First we find the needed shape of the multiplication weight matrix:</span></span><br><span class="line">    <span class="comment"># The dimension will be (length of input) by (num_outputs)</span></span><br><span class="line">    weight_shape = tf.squeeze(tf.stack([tf.shape(input_layer),[num_outputs]]))</span><br><span class="line">    <span class="comment"># Initialize such weight</span></span><br><span class="line">    weight = tf.random_normal(weight_shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="comment"># Initialize the bias</span></span><br><span class="line">    bias = tf.random_normal(shape=[num_outputs])</span><br><span class="line">    <span class="comment"># Make the 1D input array into a 2D array for matrix multiplication</span></span><br><span class="line">    input_layer_2d = tf.expand_dims(input_layer, <span class="number">0</span>)</span><br><span class="line">    <span class="comment"># Perform the matrix multiplication and add the bias</span></span><br><span class="line">    full_output = tf.add(tf.matmul(input_layer_2d, weight), bias)</span><br><span class="line">    <span class="comment"># Get rid of extra dimensions</span></span><br><span class="line">    full_output_1d = tf.squeeze(full_output)</span><br><span class="line">    <span class="keyword">return</span>(full_output_1d)</span><br><span class="line"></span><br><span class="line">my_full_output = fully_connected(my_maxpool_output, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化所有变量，运行计算图打印出每层的输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run graph</span></span><br><span class="line"><span class="comment"># Initialize Variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line">feed_dict = &#123;x_input_1d: data_1d&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">'&gt;&gt;&gt;&gt; 1D Data &lt;&lt;&lt;&lt;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Convolution Output</span></span><br><span class="line">print(<span class="string">'Input = array of length %d'</span> % (x_input_1d.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(<span class="string">'Convolution w/ filter, length = %d, stride size = %d, results in an array of length %d:'</span> % </span><br><span class="line">      (conv_size,stride_size,my_convolution_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(sess.run(my_convolution_output, feed_dict=feed_dict))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activation Output</span></span><br><span class="line">print(<span class="string">'\nInput = above array of length %d'</span> % (my_convolution_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(<span class="string">'ReLU element wise returns an array of length %d:'</span> % (my_activation_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(sess.run(my_activation_output, feed_dict=feed_dict))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Max Pool Output</span></span><br><span class="line">print(<span class="string">'\nInput = above array of length %d'</span> % (my_activation_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(<span class="string">'MaxPool, window length = %d, stride size = %d, results in the array of length %d'</span> %</span><br><span class="line">     (maxpool_size,stride_size,my_maxpool_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(sess.run(my_maxpool_output, feed_dict=feed_dict))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fully Connected Output</span></span><br><span class="line">print(<span class="string">'\nInput = above array of length %d'</span> % (my_maxpool_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(<span class="string">'Fully connected layer on all 4 rows with %d outputs:'</span> % </span><br><span class="line">      (my_full_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(sess.run(my_full_output, feed_dict=feed_dict))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输入结果如下：<br>Input = array of length 25<br>Convolution w/filter, length = 5, stride size = 1, result in an array of length 21:<br>[-0.91608119  1.53731811  -0.7954089  0.5041104   0.88933098<br> -1.81099761  0.56695032  1.17945457 -0.66252393 -1.90287709<br>  0.87184119  0.84611893 -5.25024986 -0.05473572  2.19293165<br> -4.47577858 -1.71364677  3.96857905 -2.0452652  -1.86647367<br>  -0.12697852]<br>Input = the above array of length 21<br>ReLU element wise returns the array of length 21:<br>[0.            1.53731811     0.            0.5041104     1.88933098</p>
+<ol start="0">
+<li><ol start="0">
+<li>1.17945457    0.            0.<br>0.87184119    0.84611893     0.            0.            2.19293165</li>
+</ol>
+</li>
+<li><ol start="0">
+<li>3.96857905    0.            0.<br>0.]<br>Input = the above array of length 21<br>MaxPool, window length = 5, stride size = 1, results in the array of length 17:<br>[1.88933098 1.88933098 1.88933098 1.88933098 1.88933098<br>1.17945457 1.17945457 1.17945457 0.87184119 0.87184119<br>2.19293165 2.19293165 2.19293165 3.96857905 3.96857905<br>3.96857905 3.96857905]<br>Input = the above array of length 17<br>Fully connected layer on all four rows with five outputs：<br>[1.23588216 -0.42116445 1.44521213 1.40348077 -0.79607368]</li>
+</ol>
+</li>
+</ol>
+<p>下面开始在二维数据集上进行层函数操作：</p>
+<ol>
+<li><p>重置计算图会话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Reset Graph</span></span><br><span class="line">ops.reset_default_graph()</span><br><span class="line">sess = tf.Session()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化输入数组为10x10的矩阵，然后初始化计算图的占位符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Generate 2D data</span></span><br><span class="line">data_size = [<span class="number">10</span>,<span class="number">10</span>]</span><br><span class="line">data_2d = np.random.normal(size=data_size)</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------Placeholder--------</span></span><br><span class="line">x_input_2d = tf.placeholder(dtype=tf.float32, shape=data_size)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明一个卷积层函数<br>因为数据集已经具有高度和宽度，这里仅需再扩展两维（批量大小为1，颜色通道为1）即可使用卷积conv2d()函数。本例将使用一个随机的2x2过滤层，两个方向上的步长和valid padding（非零padding）。由于输入数据是10x10，因此卷积输出为5x5：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convolution</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_layer_2d</span><span class="params">(input_2d, my_filter,stride_size)</span>:</span></span><br><span class="line">    <span class="comment"># TensorFlow's 'conv2d()' function only works with 4D arrays:</span></span><br><span class="line">    <span class="comment"># [batch#, width, height, channels], we have 1 batch, and</span></span><br><span class="line">    <span class="comment"># 1 channel, but we do have width AND height this time.</span></span><br><span class="line">    <span class="comment"># So next we create the 4D array by inserting dimension 1's.</span></span><br><span class="line">    input_3d = tf.expand_dims(input_2d, <span class="number">0</span>)</span><br><span class="line">    input_4d = tf.expand_dims(input_3d, <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># Note the stride difference below!</span></span><br><span class="line">    convolution_output = tf.nn.conv2d(input_4d, filter=my_filter, </span><br><span class="line">                                      strides=[<span class="number">1</span>,stride_size,stride_size,<span class="number">1</span>], padding=<span class="string">"VALID"</span>)</span><br><span class="line">    <span class="comment"># Get rid of unnecessary dimensions</span></span><br><span class="line">    conv_output_2d = tf.squeeze(convolution_output)</span><br><span class="line">    <span class="keyword">return</span>(conv_output_2d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Convolutional Filter</span></span><br><span class="line">my_filter = tf.Variable(tf.random_normal(shape=[conv_size,conv_size,<span class="number">1</span>,<span class="number">1</span>]))</span><br><span class="line"><span class="comment"># Create Convolutional Layer</span></span><br><span class="line">my_convolution_output = conv_layer_2d(x_input_2d, my_filter,stride_size=conv_stride_size)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>激励函数是针对逐个元素的，现创建激励函数并初始化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Activation--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">activation</span><span class="params">(input_2d)</span>:</span></span><br><span class="line">    <span class="keyword">return</span>(tf.nn.relu(input_2d))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Activation Layer</span></span><br><span class="line">my_activation_output = activation(my_convolution_output)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本例的池化层与一维数据例子中的相似，有一点不同的是，我们需要声明池化层移动窗口的宽度和高度。这里将与二维卷积层一样，将扩展池化层为二维：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Max Pool--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool</span><span class="params">(input_2d, width, height,stride)</span>:</span></span><br><span class="line">    <span class="comment"># Just like 'conv2d()' above, max_pool() works with 4D arrays.</span></span><br><span class="line">    <span class="comment"># [batch_size=1, width=given, height=given, channels=1]</span></span><br><span class="line">    input_3d = tf.expand_dims(input_2d, <span class="number">0</span>)</span><br><span class="line">    input_4d = tf.expand_dims(input_3d, <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># Perform the max pooling with strides = [1,1,1,1]</span></span><br><span class="line">    <span class="comment"># If we wanted to increase the stride on our data dimension, say by</span></span><br><span class="line">    <span class="comment"># a factor of '2', we put strides = [1, 2, 2, 1]</span></span><br><span class="line">    pool_output = tf.nn.max_pool(input_4d, ksize=[<span class="number">1</span>, height, width, <span class="number">1</span>],</span><br><span class="line">                                 strides=[<span class="number">1</span>, stride, stride, <span class="number">1</span>],</span><br><span class="line">                                 padding=<span class="string">'VALID'</span>)</span><br><span class="line">    <span class="comment"># Get rid of unnecessary dimensions</span></span><br><span class="line">    pool_output_2d = tf.squeeze(pool_output)</span><br><span class="line">    <span class="keyword">return</span>(pool_output_2d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Max-Pool Layer</span></span><br><span class="line">my_maxpool_output = max_pool(my_activation_output, </span><br><span class="line">                             width=maxpool_size, height=maxpool_size,stride=maxpool_stride_size)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本例中的全联接层也与一维数据的输出相似。注意，全联接层的二维输入看作一个对象，为了实现每项连接到每个输出，我们打平二维矩阵，然后在做矩阵乘法时再扩展维度：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#--------Fully Connected--------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fully_connected</span><span class="params">(input_layer, num_outputs)</span>:</span></span><br><span class="line">    <span class="comment"># In order to connect our whole W byH 2d array, we first flatten it out to</span></span><br><span class="line">    <span class="comment"># a W times H 1D array.</span></span><br><span class="line">    flat_input = tf.reshape(input_layer, [<span class="number">-1</span>])</span><br><span class="line">    <span class="comment"># We then find out how long it is, and create an array for the shape of</span></span><br><span class="line">    <span class="comment"># the multiplication weight = (WxH) by (num_outputs)</span></span><br><span class="line">    weight_shape = tf.squeeze(tf.stack([tf.shape(flat_input),[num_outputs]]))</span><br><span class="line">    <span class="comment"># Initialize the weight</span></span><br><span class="line">    weight = tf.random_normal(weight_shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">    <span class="comment"># Initialize the bias</span></span><br><span class="line">    bias = tf.random_normal(shape=[num_outputs])</span><br><span class="line">    <span class="comment"># Now make the flat 1D array into a 2D array for multiplication</span></span><br><span class="line">    input_2d = tf.expand_dims(flat_input, <span class="number">0</span>)</span><br><span class="line">    <span class="comment"># Multiply and add the bias</span></span><br><span class="line">    full_output = tf.add(tf.matmul(input_2d, weight), bias)</span><br><span class="line">    <span class="comment"># Get rid of extra dimension</span></span><br><span class="line">    full_output_2d = tf.squeeze(full_output)</span><br><span class="line">    <span class="keyword">return</span>(full_output_2d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Fully Connected Layer</span></span><br><span class="line">my_full_output = fully_connected(my_maxpool_output, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化变量，创建一个赋值字典：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run graph</span></span><br><span class="line"><span class="comment"># Initialize Variables</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line">feed_dict = &#123;x_input_2d: data_2d&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打印每层的输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convolution Output</span></span><br><span class="line">print(<span class="string">'Input = %s array'</span> % (x_input_2d.shape.as_list()))</span><br><span class="line">print(<span class="string">'%s Convolution, stride size = [%d, %d] , results in the %s array'</span> % </span><br><span class="line">      (my_filter.get_shape().as_list()[:<span class="number">2</span>],conv_stride_size,conv_stride_size,my_convolution_output.shape.as_list()))</span><br><span class="line">print(sess.run(my_convolution_output, feed_dict=feed_dict))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activation Output</span></span><br><span class="line">print(<span class="string">'\nInput = the above %s array'</span> % (my_convolution_output.shape.as_list()))</span><br><span class="line">print(<span class="string">'ReLU element wise returns the %s array'</span> % (my_activation_output.shape.as_list()))</span><br><span class="line">print(sess.run(my_activation_output, feed_dict=feed_dict))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Max Pool Output</span></span><br><span class="line">print(<span class="string">'\nInput = the above %s array'</span> % (my_activation_output.shape.as_list()))</span><br><span class="line">print(<span class="string">'MaxPool, stride size = [%d, %d], results in %s array'</span> % </span><br><span class="line">      (maxpool_stride_size,maxpool_stride_size,my_maxpool_output.shape.as_list()))</span><br><span class="line">print(sess.run(my_maxpool_output, feed_dict=feed_dict))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fully Connected Output</span></span><br><span class="line">print(<span class="string">'\nInput = the above %s array'</span> % (my_maxpool_output.shape.as_list()))</span><br><span class="line">print(<span class="string">'Fully connected layer on all %d rows results in %s outputs:'</span> % </span><br><span class="line">      (my_maxpool_output.shape.as_list()[<span class="number">0</span>],my_full_output.shape.as_list()[<span class="number">0</span>]))</span><br><span class="line">print(sess.run(my_full_output, feed_dict=feed_dict))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出结果如下：<br>Input = [10 x 10] array<br>2x2 Convolution, stride size=[2x2],results in the [5x5] array:<br>[[ 0.37630892  -1.41018617 -2.58821273 -0.32302785 1.18970704]<br> [-4.33685207   1.97415686  1.0844903  -1.18965471 0.84643292]<br> [ 5.23706436   2.46556497 -0.95119286  1.17715418 4.1117816]<br> [ 5.86972761   1.2213701   1.59536231  2.66231227 2.28650784]<br> [ -0.88964868 -2.75502229  4.3449688   2.67776585 -2.23714781]]<br>Input = the above [5x5] array<br>ReLU element wise returns the [5x5] array:<br>[[0.37630892 0.         0.         0.          1.18970704]<br> [0.         1.97415686 1.0844903  0.          0.84643292]<br> [5.23706436 2.46556497 0.         1.17715418  4.1117816 ]<br> [5.86972761 1.2213701  1.59536231 2.66231227  2.28650784]<br> [0.         0.         4.3449688  2.67776585  0.        ]]<br>Input = the above [5x5] array<br>Maxpool, stride size = [1x1],results in the [4x4] array:<br>[[1.97415686 1.97415686 1.0844903  1.18970704]<br> [5.23706436 2.46556497 1.17715418 4.1117816 ]<br> [5.86972761 2.46556497 2.66231227 4.1117816 ]<br> [5.86972761 4.3449688  4.3449688  2.67776585]]<br>Input = the above [4x4] array<br>Fully connected layer on all four rows with five outputs:<br>[-0.6154139 -1.96987963 -1.88811922 0.20010889 0.32519674]</p>
+<h1 id="用TensorFlow实现多层神经网络"><a href="#用TensorFlow实现多层神经网络" class="headerlink" title="用TensorFlow实现多层神经网络"></a>用TensorFlow实现多层神经网络</h1><h1 id="线性预测模型的优化"><a href="#线性预测模型的优化" class="headerlink" title="线性预测模型的优化"></a>线性预测模型的优化</h1><h1 id="用TensorFlow基于神经网络实现井字棋"><a href="#用TensorFlow基于神经网络实现井字棋" class="headerlink" title="用TensorFlow基于神经网络实现井字棋"></a>用TensorFlow基于神经网络实现井字棋</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><iclass="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/深度学习/" rel="tag"><iclass="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/TensorFlow/" rel="tag"><iclass="fa fa-tag"></i> TensorFlow</a>
+          
+            <a href="/tags/Python/" rel="tag"><iclass="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/11/TFMLC-5/" rel="next" title="TFMLC学习笔记（5） 最近邻域法">
+                <i class="fa fa-chevron-left"></i> TFMLC学习笔记（5） 最近邻域法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/04/Docker/" rel="prev" title="Docker学习笔记">
+                Docker学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA1OC8xMjU5Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/saber.jpg"
+                alt="Twist Nihility" />
+            
+              <p class="site-author-name" itemprop="name">Twist Nihility</p>
+              <p class="site-description motion-element" itemprop="description">是夫喋喋，炫玉而贾石者也。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/TwistNihility" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2544832237@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/6649702/mars-pu?tab=profile" target="_blank" title="Stack OverFlow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>Stack OverFlow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/marspu" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-contao"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/pu-jun-81/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-pen-square"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5ad760c0f265da50574473ee" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://arxiv.org" title="Arxiv" target="_blank">Arxiv</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://opencv.org" title="OpenCV" target="_blank">OpenCV</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://codepen.io" title="CodePen" target="_blank">CodePen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tensorflow.google.cn" title="TensorFlow" target="_blank">TensorFlow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developer.mozilla.org/zh-CN" title="Mozilla Developer Networks" target="_blank">Mozilla Developer Networks</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#神经网络算法基础"><span class="nav-number">1.</span> <span class="nav-text">神经网络算法基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用TensorFlow实现门函数"><span class="nav-number">2.</span> <span class="nav-text">用TensorFlow实现门函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用门函数和激励函数"><span class="nav-number">3.</span> <span class="nav-text">使用门函数和激励函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用TensorFlow实现单层神经网络"><span class="nav-number">4.</span> <span class="nav-text">用TensorFlow实现单层神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用TensorFlow实现神经网络常见层"><span class="nav-number">5.</span> <span class="nav-text">用TensorFlow实现神经网络常见层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用TensorFlow实现多层神经网络"><span class="nav-number">6.</span> <span class="nav-text">用TensorFlow实现多层神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性预测模型的优化"><span class="nav-number">7.</span> <span class="nav-text">线性预测模型的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用TensorFlow基于神经网络实现井字棋"><span class="nav-number">8.</span> <span class="nav-text">用TensorFlow基于神经网络实现井字棋</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Twist Nihility</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">全站总字数&#58;</span>
+    
+    <span title="全站总字数">51.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("wXTw0k8elDqBTnY5iHd52vlV-gzGzoHsz", "UYebvR19cj60NeNvmfEbbJij");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
