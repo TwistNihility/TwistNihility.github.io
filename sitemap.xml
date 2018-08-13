@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/08/04/Docker/</loc>
+    <loc>http://yoursite.com/2018/08/13/tensorflow-whitebook-zh/</loc>
     
-    <lastmod>2018-08-04T06:35:54.589Z</lastmod>
+    <lastmod>2018-08-13T14:41:00.125Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/05/13/TFMLC-6/</loc>
     
-    <lastmod>2018-06-06T02:58:53.561Z</lastmod>
+    <lastmod>2018-08-04T06:46:35.434Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/08/04/Docker/</loc>
+    
+    <lastmod>2018-08-04T06:35:54.589Z</lastmod>
     
   </url>
   
